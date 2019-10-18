@@ -11,7 +11,7 @@ boolean encoder1Clicked = false;
 
 int r, g, b;
 
-int i=0;
+int i = 0;
 int lastMili = 0;
 
 void setup() {
@@ -27,11 +27,13 @@ void setup() {
   wall.setColor(50, 0, 0);
 
   int packetSize = Udp.parsePacket();
-  while (packetSize != 0) {;}
+  while (packetSize != 0) {
+    ;
+  }
 }
 
 void loop() {
-  //  wall.clear();
+  wall.clear();
 
   encoder0Clicked = false;
   encoder1Clicked = false;
@@ -76,16 +78,16 @@ void loop() {
     Serial.println(encoder0Cnt);
   }
 
-  //  wall.drawDot(10 + encoder0Cnt, 5 + encoder1Cnt);
-  //  wall.show();
-  
-  if(lastMili + 100 < millis()){
-    i++;
-    i = i%(27*48);
-    wall.pixels.setPixelColor(i,wall.color);
-    wall.show();
-    lastMili = millis();
-  }
+  wall.drawDot(10 + encoder0Cnt, 5 + encoder1Cnt);
+  wall.show();
+
+  //  if(lastMili + 100 < millis()){
+  //    i++;
+  //    i = i%(27*48);
+  //    wall.pixels.setPixelColor(i,wall.color);
+  //    wall.show();
+  //    lastMili = millis();
+  //  }
 
 
 }
